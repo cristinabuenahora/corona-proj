@@ -1,5 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
+
+import Number from './Components/Number'; 
 import './App.css';
 
 function App() {
@@ -18,9 +20,10 @@ function App() {
         >
           Learn React
         </a>
+        <Number />
       </header>
     </div>
   );
 }
 
-export default App;
+export default App; 
