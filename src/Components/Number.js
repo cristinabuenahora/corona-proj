@@ -20,6 +20,6 @@ const mapStateToProps = (state) => ({
     num: getNum(state)
 });
 
-export default connect(mapStateToProps,{ 
-    addOne 
+export default connect(mapStateToProps,{
+    addOne
 })(Number);
