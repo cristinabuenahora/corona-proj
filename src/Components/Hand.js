@@ -17,7 +17,7 @@ function Card(props) {
 
 function Hand(props) {
   return (
-    <div class="hand">
+    <div className="hand">
       { props.cards.map((card, i) =>
         <Card
             suit={ card.suit }

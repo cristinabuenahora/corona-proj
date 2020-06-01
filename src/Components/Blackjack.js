@@ -4,13 +4,13 @@ import { deal } from '../Actions/actions';
 import { getPlayerHand, getDealerHand } from '../Selectors/selectors';
 import { connect } from 'react-redux';
 
-const Blackjack = (props) => (
+const Blackjack = ({ deal, dealerHand, playerHand }) => (
   <div>
-    <button onClick={ props.deal }>Start Deal</button>
+    <button onClick={deal}>Start Deal</button>
     <p>Dealer Hand:</p>
-    <Hand cards={ props.dealerHand } />
+    <Hand cards={dealerHand} />
     <p>Your Hand:</p>
-    <Hand cards={ props.playerHand } />
+    <Hand cards={playerHand} />
   </div>
 );
 
