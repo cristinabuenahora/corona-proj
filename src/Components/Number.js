@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addOne } from '../Actions/actions';
-import { getNum } from '../Selectors/selectors';
+import { getScore } from '../Selectors/selectors';
 
 class Number extends React.Component {
   render() {
@@ -17,7 +17,7 @@ class Number extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    num: getNum(state)
+    num: getScore(state)
 });
 
 export default connect(mapStateToProps,{

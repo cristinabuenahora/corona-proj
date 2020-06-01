@@ -1,5 +1,5 @@
-import { ADD_NUM } from './actionTypes';
+import { DEAL } from './actionTypes';
 
-export const addOne = () => ({
-    type: ADD_NUM
-  });
+export const deal = () => ({
+  type: DEAL
+});

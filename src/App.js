@@ -1,14 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 
-import Hand from './Components/Hand';
+import Blackjack from './Components/Blackjack';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Hand />
+        <Blackjack />
       </header>
     </div>
   );

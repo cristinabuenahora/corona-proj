@@ -1,2 +1,3 @@
-export const getNum = state => state.reducers.num;
-export const getHand = state => state.reducers.hand;
+export const getScore = state => state.reducers.getScore;
+export const getPlayerHand = state => state.reducers.playerHand;
+export const getDealerHand = state => state.reducers.dealerHand;

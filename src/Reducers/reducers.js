@@ -1,26 +1,23 @@
-import { ADD_NUM } from '../Actions/actionTypes';
+import { DEAL } from '../Actions/actionTypes';
+import { newShuffledDeck } from '../Components/Cards.js';
 
 const initialState = {
-  num: 0,
-  hand:
-  [
-    {suit: 'hearts', value: '9'},
-    {suit: 'diamonds', value:'K'},
-    {suit: 'clubs', value: 'A'},
-    {suit: 'spades', value: '2'}
-  ]
+  score: 0,
+  deck: newShuffledDeck(),
+  playerHand: [],
+  dealerHand: [],
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case ADD_NUM: {
-    console.log(state.num);
-    const updatedNum = state.num + 1;
+    case DEAL:
+      let [player1, dealer1, player2, dealer2] = state.deck;
       return {
         ...state,
-        num: updatedNum
+        deck: state.deck.slice(4),
+        playerHand: [player1, player2],
+        dealerHand: [dealer1, dealer2],
       };
-    }
 
     default:
       return state;
