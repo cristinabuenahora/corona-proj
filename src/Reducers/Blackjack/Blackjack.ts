@@ -20,6 +20,14 @@ export default function blackjack(state = initialState, action: AnyAction): Blac
         dealerHand: [dealer1, dealer2],
       };
 
+    case BlackjackTypes.HIT: 
+      let [nextCard] = state.deck;
+      return {
+          ...state,
+          deck: state.deck.slice(1),
+          playerHand: [...state.playerHand, nextCard]
+      }
+
     default:
       return state;
   }
