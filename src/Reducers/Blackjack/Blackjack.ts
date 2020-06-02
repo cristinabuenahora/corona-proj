@@ -1,16 +1,17 @@
-import { DEAL } from '../Actions/actionTypes';
-import { newShuffledDeck } from '../Components/Cards.js';
+import { BlackjackTypes, BlackjackStore } from './Blackjack.model';
+import { newShuffledDeck } from '../../Components/Cards.js';
+import { AnyAction } from 'redux';
 
-const initialState = {
+export const initialState: BlackjackStore = {
   score: 0,
   deck: newShuffledDeck(),
   playerHand: [],
   dealerHand: [],
 };
 
-export default function(state = initialState, action) {
+export default function blackjack(state = initialState, action: AnyAction): BlackjackStore {
   switch (action.type) {
-    case DEAL:
+    case BlackjackTypes.DEAL_CARDS:
       let [player1, dealer1, player2, dealer2] = state.deck;
       return {
         ...state,

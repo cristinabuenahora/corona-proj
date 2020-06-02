@@ -1,5 +1,5 @@
-import { DEAL } from './actionTypes';
+import { BlackjackTypes } from '../Reducers/Blackjack/Blackjack.model';
 
 export const deal = () => ({
-  type: DEAL
+  type: BlackjackTypes.DEAL_CARDS
 });
