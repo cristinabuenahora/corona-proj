@@ -5,7 +5,7 @@ const suits = ['clubs', 'diamonds', 'hearts', 'spades'];
 
 export const card = (value, suit) => ({
   value: value,
-  suit: suit,
+  suit: suit
 });
 
 export const newShuffledDeck = () =>

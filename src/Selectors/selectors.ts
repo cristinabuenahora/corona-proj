@@ -5,7 +5,6 @@ export const getScore = (state: RootState): number => state.blackjack.score;
 export const getPlayerHand = (state: RootState): Card[] => state.blackjack.playerHand;
 export const getDealerHand = (state: RootState): Card[] => state.blackjack.dealerHand;
 
-
 export const getTotal = (state: RootState, hand: Card[]): number => {
     return hand.reduce((sum, card) => {
         switch(card.value) {
@@ -18,7 +17,7 @@ export const getTotal = (state: RootState, hand: Card[]): number => {
             const plusOne = 1 + sum;
             const plusEleven = 11 + sum; 
             return (plusEleven > 21) ? plusOne : plusEleven; 
-            
+
             default: 
             return card.value + sum;
         }

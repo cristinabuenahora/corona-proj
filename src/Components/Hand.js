@@ -6,7 +6,7 @@ function Card(props) {
   const color = (props.suit === 'hearts' || props.suit === 'diamonds') ? 'red' : 'black';
   const symbol = suits[props.suit];
   return (
-    <div class="card">
+    <div className="card">
       <span style={ { color } }>
         { props.value }
         { symbol }
