@@ -1,10 +1,10 @@
 export enum BlackjackTypes { 
     DEAL_CARDS = 'DEAL_CARDS',
-    HIT = 'HIT'
+    HIT = 'HIT',
 }
 
 export interface Card {
-    value: number,
+    value: any,
     suit: string
 }
 
