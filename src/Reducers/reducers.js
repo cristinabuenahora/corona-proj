@@ -1,5 +1,5 @@
-import { DEAL } from '../Actions/actionTypes';
-import { newShuffledDeck } from '../Components/Cards.js';
+import { DEAL, HIT } from '../Actions/actionTypes';
+import { card, newShuffledDeck } from '../Components/Cards.js';
 
 const initialState = {
   score: 0,
@@ -16,7 +16,17 @@ export default function(state = initialState, action) {
         ...state,
         deck: state.deck.slice(4),
         playerHand: [player1, player2],
-        dealerHand: [dealer1, dealer2],
+        dealerHand: [dealer1, card(dealer2.value, dealer2.suit, false)],
+      };
+
+    case HIT:
+      let [newCard] = state.deck;
+
+      let newHand = state.playerHand.concat(newCard);
+      return {
+        ...state,
+        deck: state.deck.slice(1),
+        playerHand: newHand
       };
 
     default:

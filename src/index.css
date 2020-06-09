@@ -13,15 +13,54 @@ code {
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  border-radius: 5px; /* 5px rounded corners */
-  background-color: #FFF;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-top: 2em;
-  padding-bottom: 2em;
-  margin: 0.5em;
+    display: inline-block;
+    width: 3.3em;
+    height: 4.6em;
+    border: 1px solid #666;
+    border-radius: .3em;
+    -moz-border-radius: .3em;
+    -webkit-border-radius: .3em;
+    -khtml-border-radius: .3em;
+    padding: .25em;
+    margin: 0 .5em .5em 0;
+    text-align: center;
+    font-size: 1.2em; /* @change: adjust this value to make bigger or smaller cards */
+    font-weight: normal;
+    font-family: Arial, sans-serif;
+    position: relative;
+    background-color: #fff;
+    -moz-box-shadow: .2em .2em .5em #333;
+    -webkit-box-shadow: .2em .2em .5em #333;
+    box-shadow: .2em .2em .5em #333;
+}
+
+.card .rank,
+.card .suit {
+    display: block;
+    line-height: 1;
+    text-align: left;
+}
+.card .suit {
+    line-height: .7;
+}
+
+.card.down {
+    text-indent: -4000px;
+    background-color: #063e9e;
+    background-repeat: repeat;
+}
+
+.card.diamonds {
+    color: #f00;
+}
+.card.hearts {
+    color: #f00;
+}
+.card.spades {
+    color: #000;
+}
+.card.clubs {
+    color: #000;
 }
 
 .hand {

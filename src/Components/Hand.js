@@ -5,12 +5,16 @@ const suits = {'clubs':'♣', 'diamonds': '♦', 'hearts': '♥', 'spades':'♠'
 function Card(props) {
   const color = (props.suit === 'hearts' || props.suit === 'diamonds') ? 'red' : 'black';
   const symbol = suits[props.suit];
+  if (!props.faceUp) {
+    return (
+      <div class="card down">*</div>
+    )
+  }
+  const divClass = "card rank-".concat(props.value, " ", props.suit);
   return (
-    <div class="card">
-      <span style={ { color } }>
-        { props.value }
-        { symbol }
-      </span>
+    <div class={divClass}>
+      <span class="rank">{ props.value }</span>
+      <span class="suit">{ symbol }</span>
     </div>
   );
 }
@@ -22,6 +26,7 @@ function Hand(props) {
         <Card
             suit={ card.suit }
             value={ card.value }
+            faceUp={ card.faceUp }
             key={ i }
         />
       )}
