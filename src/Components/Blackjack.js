@@ -1,19 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-import { deal, hit } from '../Actions/actions';
-import { getPlayerHand, getDealerHand, getPlayerTotal, getDealerTotal } from '../Selectors/selectors';
-
 import Hand from './Hand';
+import { deal, hit } from '../Actions/actions';
+import { getPlayerHand, getDealerHand } from '../Selectors/selectors';
+import { connect } from 'react-redux';
 
 const Blackjack = ({ deal, hit, dealerHand, dealerTotal, playerHand, playerTotal }) => (
   <div>
-    <button onClick={deal}>Start Deal</button>
-    <button onClick={hit}>Hit</button>
-    <p>Dealer Hand: {dealerTotal}</p>
-    <Hand cards={dealerHand} />
-    <p>Your Hand: {playerTotal}</p>
-    <Hand cards={playerHand} />
+    <button onClick={ props.deal }>Deal</button>
+    <p>Dealer:</p>
+    <Hand cards={ props.dealerHand } />
+    <p>Your Hand:</p>
+    <Hand cards={ props.playerHand } />
+    <button onClick={ props.hit }>Hit</button>
   </div>
 );
 
@@ -24,7 +22,7 @@ const mapStateToProps = (state) => ({
     dealerTotal: getDealerTotal(state)
 });
 
-export default connect(mapStateToProps, { 
-  deal, 
+export default connect(mapStateToProps, {
+  deal,
   hit
 })(Blackjack);
