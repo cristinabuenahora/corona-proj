@@ -29,6 +29,15 @@ export default function blackjack(state = initialState, action: AnyAction): Blac
           playerHand: [...state.playerHand, nextCard]
       }
 
+    case BlackjackTypes.RESET: {
+        return {
+          score: 0,
+          deck: newShuffledDeck(),
+          playerHand: [],
+          dealerHand: []
+        };
+    }
+
     default:
       return state;
   }

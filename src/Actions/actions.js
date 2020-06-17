@@ -7,3 +7,7 @@ export const deal = () => ({
 export const hit = () => ({
   type: BlackjackTypes.HIT
 });
+
+export const reset = () => ({
+  type: BlackjackTypes.RESET
+});

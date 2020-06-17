@@ -1,6 +1,7 @@
 export enum BlackjackTypes {
     DEAL_CARDS = 'DEAL_CARDS',
     HIT = 'HIT',
+    RESET = 'RESET'
 }
 
 export interface Card {
