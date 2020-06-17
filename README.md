@@ -66,3 +66,18 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+Blackjack Rules: https://bicyclecards.com/how-to-play/blackjack/
+
+To Add: 
+- Win / Lose logic
+- Flip dealer card
+- Fix the ace counting
+- Stand button
+- Dealer play
+- Doubling down
+- Add multi player
+
+- Animations
+- Mobile responsiveness 

@@ -16,10 +16,10 @@ const Blackjack = ({ deal, hit, dealerHand, dealerTotal, playerHand, playerTotal
 );
 
 const mapStateToProps = (state) => ({
-    playerHand: getPlayerHand(state),
-    playerTotal: getPlayerTotal(state),
-    dealerHand: getDealerHand(state),
-    dealerTotal: getDealerTotal(state)
+  playerHand: getPlayerHand(state),
+  playerTotal: getPlayerTotal(state),
+  dealerHand: getDealerHand(state),
+  dealerTotal: getDealerTotal(state)
 });
 
 export default connect(mapStateToProps, {
