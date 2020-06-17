@@ -6,14 +6,17 @@ import { connect } from 'react-redux';
 
 const Blackjack = ({ deal, hit, reset, dealerHand, dealerTotal, playerHand, playerTotal, gameOver }) => (
   <div>
-    {!gameOver && <button onClick={ deal }>Deal</button>}
+    {gameOver 
+    ? <div>
+        <p>{playerTotal === 21 ? 'BLACKJACK!!!' : 'Game Over!'}</p>
+        <button onClick={ reset }>Start Over</button>
+      </div>
+    : <button onClick={ deal }>Deal</button>}
     <p>Dealer: { dealerTotal }</p>
     <Hand cards={ dealerHand } />
     <p>Your Hand: { playerTotal }</p>
     <Hand cards={ playerHand } />
-    {gameOver 
-    ? <div><p>Game Over!</p><button onClick={ reset }>Start Over</button></div>
-    : <button onClick={ hit }>Hit</button>}
+    {(!gameOver && playerTotal > 0) && <button onClick={ hit }>Hit</button>}
   </div>
 );
 
@@ -25,7 +28,7 @@ const mapStateToProps = (state) => {
     playerTotal,
     dealerHand: getDealerHand(state),
     dealerTotal: getDealerTotal(state),
-    gameOver: playerTotal > 21
+    gameOver: playerTotal >= 21
   });
 }; 
 
