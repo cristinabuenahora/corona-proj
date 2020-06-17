@@ -8,7 +8,7 @@ const Blackjack = ({ deal, hit, reset, dealerHand, dealerTotal, playerHand, play
   <div>
     {gameOver 
     ? <div>
-        <p>{playerTotal === 21 ? 'BLACKJACK!!!' : 'Game Over!'}</p>
+        <p>{playerTotal === 21 ? 'BLACKJACK!! :D' : 'Game Over :('}</p>
         <button onClick={ reset }>Start Over</button>
       </div>
     : <button onClick={ deal }>Deal</button>}
