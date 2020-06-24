@@ -18,7 +18,7 @@ const Blackjack = ({ deal, hit, stand, reset, canHit, canStand, dealerHand, deal
          {resetButton}
        </div>
      : dealButton}
-     <p>Dealer: { dealerTotal }</p>
+     <p>Dealer</p>
      <Hand cards={ dealerHand } />
      <p>Your Hand: { playerTotal }</p>
      <Hand cards={ playerHand } />
