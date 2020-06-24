@@ -2,6 +2,7 @@ export enum BlackjackTypes {
     DEAL_CARDS = 'DEAL_CARDS',
     HIT = 'HIT',
     STAND = 'STAND',
+    DEALER_PLAY = 'DEALER_PLAY',
     RESET = 'RESET'
 }
 

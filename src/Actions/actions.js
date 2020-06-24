@@ -12,6 +12,10 @@ export const stand = () => ({
   type: BlackjackTypes.STAND
 });
 
+export const dealerPlay = () => ({
+  type: BlackjackTypes.DEALER_PLAY
+});
+
 export const reset = () => ({
   type: BlackjackTypes.RESET
 });

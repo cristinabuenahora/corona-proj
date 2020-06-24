@@ -14,8 +14,8 @@ export const initialState: BlackjackStore = {
 export default function blackjack(state = initialState, action: AnyAction): BlackjackStore {
   switch (action.type) {
     case BlackjackTypes.DEAL_CARDS:
-      let [player1, dealer1, player2, dealer2] = state.deck;
-      let faceDownCard : Card = {value: dealer2.value, suit: dealer2.suit, faceUp: false};
+      const [player1, dealer1, player2, dealer2] = state.deck;
+      const faceDownCard: Card = { value: dealer2.value, suit: dealer2.suit, faceUp: false };
       return {
         ...state,
         deck: state.deck.slice(4),
@@ -26,7 +26,7 @@ export default function blackjack(state = initialState, action: AnyAction): Blac
       };
 
     case BlackjackTypes.HIT:
-      let [nextCard] = state.deck;
+    const [nextCard] = state.deck;
       return {
           ...state,
           deck: state.deck.slice(1),
@@ -39,6 +39,26 @@ export default function blackjack(state = initialState, action: AnyAction): Blac
         canHit: false,
         canStand: false
       }
+
+    case BlackjackTypes.DEALER_PLAY: {
+      const { dealerHand } = state;
+      console.log(dealerHand);
+      if (dealerHand.length === 2 && !dealerHand[1].faceUp) {
+        const updatedDealerHand = [...dealerHand]; 
+        Object.assign(updatedDealerHand[1], { faceUp: true });
+        return {
+          ...state,
+          dealerHand: updatedDealerHand
+        };
+      } else {
+        const [nextCard] = state.deck;
+        return {
+          ...state,
+          deck: state.deck.slice(1),
+          dealerHand: [...state.dealerHand, nextCard]
+        }
+      }
+    }
 
     case BlackjackTypes.RESET: {
         return {

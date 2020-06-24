@@ -1,14 +1,15 @@
 import React from 'react';
 import Hand from './Hand';
-import { deal, hit, stand, reset } from '../Actions/actions';
+import { deal, hit, stand, reset, dealerPlay } from '../Actions/actions';
 import { getPlayerHand, getDealerHand, getDealerTotal, getPlayerTotal, getCanHit, getCanStand } from '../Selectors/selectors';
 import { connect } from 'react-redux';
 
-const Blackjack = ({ deal, hit, stand, reset, canHit, canStand, dealerHand, dealerTotal, playerHand, playerTotal, gameOver }) => {
+const Blackjack = ({ deal, hit, stand, dealerPlay, reset, canHit, canStand, dealerHand, dealerTotal, playerHand, playerTotal, gameOver }) => {
   const standButton = <button onClick={ stand }>Stand</button>;
   const hitButton = <button onClick={ hit }>Hit</button>;
   const resetButton = <button onClick={ reset }>Start Over</button>;
   const dealButton = <button onClick={ deal }>Deal</button>;
+  const dealerPlayButton = <button onClick={ dealerPlay }>Dealer Play</button>;
 
   return (
    <div>
@@ -25,6 +26,7 @@ const Blackjack = ({ deal, hit, stand, reset, canHit, canStand, dealerHand, deal
      {(!gameOver && playerTotal > 0) && <div>
        {canStand && standButton}
        {canHit && hitButton}
+       {!canStand && dealerPlayButton}
      </div>}
    </div>
  );
@@ -48,5 +50,6 @@ export default connect(mapStateToProps, {
   deal,
   hit,
   stand,
+  dealerPlay,
   reset
 })(Blackjack);
