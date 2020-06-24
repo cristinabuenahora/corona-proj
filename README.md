@@ -72,10 +72,7 @@ Blackjack Rules: https://bicyclecards.com/how-to-play/blackjack/
 
 To Add: 
 - Win / Lose logic
-- Flip dealer card
 - Fix the ace counting
-- Stand button
-- Dealer play
 - Doubling down
 - Add multi player
 
