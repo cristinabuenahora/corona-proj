@@ -5,6 +5,8 @@ import { AnyAction } from 'redux';
 export const initialState: BlackjackStore = {
   score: 0,
   deck: newShuffledDeck(),
+  canHit: false,
+  canStand: false,
   playerHand: [],
   dealerHand: [],
 };
@@ -17,6 +19,8 @@ export default function blackjack(state = initialState, action: AnyAction): Blac
       return {
         ...state,
         deck: state.deck.slice(4),
+        canHit: true,
+        canStand: true,
         playerHand: [player1, player2],
         dealerHand: [dealer1, faceDownCard],
       };
@@ -29,10 +33,19 @@ export default function blackjack(state = initialState, action: AnyAction): Blac
           playerHand: [...state.playerHand, nextCard]
       }
 
+    case BlackjackTypes.STAND: 
+      return {
+        ...state,
+        canHit: false,
+        canStand: false
+      }
+
     case BlackjackTypes.RESET: {
         return {
           score: 0,
           deck: newShuffledDeck(),
+          canHit: false,
+          canStand: false,
           playerHand: [],
           dealerHand: []
         };

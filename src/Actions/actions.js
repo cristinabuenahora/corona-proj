@@ -8,6 +8,10 @@ export const hit = () => ({
   type: BlackjackTypes.HIT
 });
 
+export const stand = () => ({
+  type: BlackjackTypes.STAND
+});
+
 export const reset = () => ({
   type: BlackjackTypes.RESET
 });

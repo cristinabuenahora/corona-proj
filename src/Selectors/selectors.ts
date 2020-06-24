@@ -1,6 +1,9 @@
 import { Card } from '../Reducers/Blackjack/Blackjack.model';
 import { RootState } from '../Reducers/index'; 
 
+export const getCanHit = (state: RootState): boolean => state.blackjack.canHit;
+export const getCanStand = (state: RootState): boolean => state.blackjack.canStand;
+
 export const getScore = (state: RootState): number => state.blackjack.score;
 export const getPlayerHand = (state: RootState): Card[] => state.blackjack.playerHand;
 export const getDealerHand = (state: RootState): Card[] => state.blackjack.dealerHand;

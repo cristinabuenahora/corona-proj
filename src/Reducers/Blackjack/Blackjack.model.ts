@@ -1,6 +1,7 @@
 export enum BlackjackTypes {
     DEAL_CARDS = 'DEAL_CARDS',
     HIT = 'HIT',
+    STAND = 'STAND',
     RESET = 'RESET'
 }
 
@@ -13,6 +14,8 @@ export interface Card {
 export interface BlackjackStore {
     score: number,
     deck: Card[],
+    canHit: boolean,
+    canStand: boolean
     dealerHand: Card[],
     playerHand: Card[],
 }

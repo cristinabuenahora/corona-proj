@@ -1,24 +1,34 @@
 import React from 'react';
 import Hand from './Hand';
-import { deal, hit, reset } from '../Actions/actions';
-import { getPlayerHand, getDealerHand, getDealerTotal, getPlayerTotal } from '../Selectors/selectors';
+import { deal, hit, stand, reset } from '../Actions/actions';
+import { getPlayerHand, getDealerHand, getDealerTotal, getPlayerTotal, getCanHit, getCanStand } from '../Selectors/selectors';
 import { connect } from 'react-redux';
 
-const Blackjack = ({ deal, hit, reset, dealerHand, dealerTotal, playerHand, playerTotal, gameOver }) => (
-  <div>
-    {gameOver 
-    ? <div>
-        <p>{playerTotal === 21 ? 'BLACKJACK!! :D' : 'Game Over :('}</p>
-        <button onClick={ reset }>Start Over</button>
-      </div>
-    : <button onClick={ deal }>Deal</button>}
-    <p>Dealer: { dealerTotal }</p>
-    <Hand cards={ dealerHand } />
-    <p>Your Hand: { playerTotal }</p>
-    <Hand cards={ playerHand } />
-    {(!gameOver && playerTotal > 0) && <button onClick={ hit }>Hit</button>}
-  </div>
-);
+const Blackjack = ({ deal, hit, stand, reset, canHit, canStand, dealerHand, dealerTotal, playerHand, playerTotal, gameOver }) => {
+  const standButton = <button onClick={ stand }>Stand</button>;
+  const hitButton = <button onClick={ hit }>Hit</button>;
+  const resetButton = <button onClick={ reset }>Start Over</button>;
+  const dealButton = <button onClick={ deal }>Deal</button>;
+
+  return (
+   <div>
+     {gameOver 
+     ? <div>
+         <p>{playerTotal === 21 ? 'BLACKJACK!! :D' : 'Game Over :('}</p>
+         {resetButton}
+       </div>
+     : dealButton}
+     <p>Dealer: { dealerTotal }</p>
+     <Hand cards={ dealerHand } />
+     <p>Your Hand: { playerTotal }</p>
+     <Hand cards={ playerHand } />
+     {(!gameOver && playerTotal > 0) && <div>
+       {canStand && standButton}
+       {canHit && hitButton}
+     </div>}
+   </div>
+ );
+}
 
 const mapStateToProps = (state) => {
   const playerTotal = getPlayerTotal(state); 
@@ -28,6 +38,8 @@ const mapStateToProps = (state) => {
     playerTotal,
     dealerHand: getDealerHand(state),
     dealerTotal: getDealerTotal(state),
+    canHit: getCanHit(state),
+    canStand: getCanStand(state),
     gameOver: playerTotal >= 21
   });
 }; 
@@ -35,5 +47,6 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   deal,
   hit,
+  stand,
   reset
 })(Blackjack);
