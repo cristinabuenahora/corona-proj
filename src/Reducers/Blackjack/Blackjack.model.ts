@@ -15,8 +15,7 @@ export interface Card {
 export interface BlackjackStore {
     score: number,
     deck: Card[],
-    canHit: boolean,
-    canStand: boolean
+    playerTurn: boolean,
     dealerHand: Card[],
     playerHand: Card[],
 }

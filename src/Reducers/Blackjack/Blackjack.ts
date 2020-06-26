@@ -5,8 +5,7 @@ import { AnyAction } from 'redux';
 export const initialState: BlackjackStore = {
   score: 0,
   deck: newShuffledDeck(),
-  canHit: false,
-  canStand: false,
+  playerTurn: true,
   playerHand: [],
   dealerHand: [],
 };
@@ -19,8 +18,7 @@ export default function blackjack(state = initialState, action: AnyAction): Blac
       return {
         ...state,
         deck: state.deck.slice(4),
-        canHit: true,
-        canStand: true,
+        playerTurn: true,
         playerHand: [player1, player2],
         dealerHand: [dealer1, faceDownCard],
       };
@@ -30,32 +28,34 @@ export default function blackjack(state = initialState, action: AnyAction): Blac
       return {
           ...state,
           deck: state.deck.slice(1),
-          playerHand: [...state.playerHand, nextCard]
+          playerHand: [...state.playerHand, nextCard],
+          playerTurn: false
       }
 
-    case BlackjackTypes.STAND: 
+    case BlackjackTypes.STAND:
       return {
         ...state,
-        canHit: false,
-        canStand: false
+        playerTurn: false
       }
 
     case BlackjackTypes.DEALER_PLAY: {
       const { dealerHand } = state;
       console.log(dealerHand);
       if (dealerHand.length === 2 && !dealerHand[1].faceUp) {
-        const updatedDealerHand = [...dealerHand]; 
+        const updatedDealerHand = [...dealerHand];
         Object.assign(updatedDealerHand[1], { faceUp: true });
         return {
           ...state,
-          dealerHand: updatedDealerHand
+          dealerHand: updatedDealerHand,
+          playerTurn: true
         };
       } else {
         const [nextCard] = state.deck;
         return {
           ...state,
           deck: state.deck.slice(1),
-          dealerHand: [...state.dealerHand, nextCard]
+          dealerHand: [...state.dealerHand, nextCard],
+          playerTurn: true
         }
       }
     }
@@ -64,10 +64,9 @@ export default function blackjack(state = initialState, action: AnyAction): Blac
         return {
           score: 0,
           deck: newShuffledDeck(),
-          canHit: false,
-          canStand: false,
           playerHand: [],
-          dealerHand: []
+          dealerHand: [],
+          playerTurn: false
         };
     }
 
