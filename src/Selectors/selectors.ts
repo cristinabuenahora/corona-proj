@@ -1,7 +1,6 @@
 import { Card } from '../Reducers/Blackjack/Blackjack.model';
 import { RootState } from '../Reducers/index';
 
-export const getScore = (state: RootState): number => state.blackjack.score;
 export const getPlayerHand = (state: RootState): Card[] => state.blackjack.playerHand;
 export const getDealerHand = (state: RootState): Card[] => state.blackjack.dealerHand;
 export const getPlayerTurn = (state: RootState): boolean => state.blackjack.playerTurn;
@@ -25,7 +24,7 @@ export const getTotal = (state: RootState, hand: Card[]): number => {
     }, 0);
 };
 
-export const getPlayerTotal = (state: RootState): number =>
+export const calculatePlayerTotal = (state: RootState): number =>
     getTotal(state, getPlayerHand(state));
-export const getDealerTotal = (state: RootState): number =>
+export const calculateDealerTotal = (state: RootState): number =>
     getTotal(state, getDealerHand(state));

@@ -13,7 +13,8 @@ export interface Card {
 }
 
 export interface BlackjackStore {
-    score: number,
+    playerTotal: number,
+    dealerTotal: number,
     deck: Card[],
     playerTurn: boolean,
     dealerHand: Card[],

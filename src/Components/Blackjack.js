@@ -1,7 +1,7 @@
 import React from 'react';
 import Hand from './Hand';
 import { deal, hit, stand, reset, dealerPlay } from '../Actions/actions';
-import { getPlayerHand, getDealerHand, getDealerTotal, getPlayerTotal, getPlayerTurn } from '../Selectors/selectors';
+import { getPlayerHand, getDealerHand, calculateDealerTotal, calculatePlayerTotal, getPlayerTurn } from '../Selectors/selectors';
 import { connect } from 'react-redux';
 
 const Blackjack = ({ deal, hit, stand, dealerPlay, reset, dealerHand, dealerTotal, playerHand, playerTotal, lose, win, playerTurn }) => {
@@ -13,15 +13,11 @@ const Blackjack = ({ deal, hit, stand, dealerPlay, reset, dealerHand, dealerTota
 
   return (
    <div>
-   <p>Dealer</p>
-   <Hand cards={ dealerHand } />
-   <p>Your Hand: { playerTotal }</p>
-   <Hand cards={ playerHand } />
    {win
     ? <div>
         <p>You win!! :D</p>
-        <p>Your total:{playerTotal}</p>
-        <p>Dealer total:{dealerTotal}</p>
+        <p>Your total: {playerTotal}</p>
+        <p>Dealer total: {dealerTotal}</p>
         {resetButton}
       </div>
     : lose
@@ -31,30 +27,29 @@ const Blackjack = ({ deal, hit, stand, dealerPlay, reset, dealerHand, dealerTota
           <p>Dealer total:{dealerTotal}</p>
           {resetButton}
         </div>
-      :
-      <div>
-      {dealButton}
-      <div>
-        {playerTurn
-        ? <div>{standButton}{hitButton}</div>
-        : <div>{dealerPlayButton}</div>
-        }
-      </div>
-      </div>
+      : playerTotal > 0
+        ? (playerTurn
+           ? <div>{standButton} {hitButton}</div>
+           : <div>{dealerPlayButton}</div>)
+        : <div>{dealButton}</div>
     }
+    <p>Dealer</p>
+    <Hand cards={ dealerHand } />
+    <p>Your Hand: { playerTotal }</p>
+    <Hand cards={ playerHand } />
     </div>
  );
 }
 
 const mapStateToProps = (state) => {
-  const playerTotal = getPlayerTotal(state);
-  const dealerTotal = getDealerTotal(state);
+  const playerTotal = calculatePlayerTotal(state);
+  const dealerTotal = calculateDealerTotal(state);
 
   return ({
     playerHand: getPlayerHand(state),
-    playerTotal,
+    playerTotal: playerTotal,
     dealerHand: getDealerHand(state),
-    dealerTotal,
+    dealerTotal: dealerTotal,
     lose: playerTotal >= 21,
     win: playerTotal === 21 || dealerTotal > 21,
     playerTurn: getPlayerTurn(state)

@@ -3,7 +3,8 @@ import { newShuffledDeck } from '../../Components/Cards.js';
 import { AnyAction } from 'redux';
 
 export const initialState: BlackjackStore = {
-  score: 0,
+  playerTotal: 0,
+  dealerTotal: 0,
   deck: newShuffledDeck(),
   playerTurn: true,
   playerHand: [],
@@ -40,7 +41,6 @@ export default function blackjack(state = initialState, action: AnyAction): Blac
 
     case BlackjackTypes.DEALER_PLAY: {
       const { dealerHand } = state;
-      console.log(dealerHand);
       if (dealerHand.length === 2 && !dealerHand[1].faceUp) {
         const updatedDealerHand = [...dealerHand];
         Object.assign(updatedDealerHand[1], { faceUp: true });
@@ -62,7 +62,8 @@ export default function blackjack(state = initialState, action: AnyAction): Blac
 
     case BlackjackTypes.RESET: {
         return {
-          score: 0,
+          playerTotal: 0,
+          dealerTotal: 0,
           deck: newShuffledDeck(),
           playerHand: [],
           dealerHand: [],
