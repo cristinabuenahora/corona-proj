@@ -34,11 +34,6 @@ export default function blackjack(state = initialState, action: AnyAction): Blac
       }
 
     case BlackjackTypes.STAND:
-      return {
-        ...state,
-        playerTurn: false
-      }
-
     case BlackjackTypes.DEALER_PLAY: {
       const { dealerHand } = state;
       if (dealerHand.length === 2 && !dealerHand[1].faceUp) {
