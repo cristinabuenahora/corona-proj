@@ -3,18 +3,17 @@ import React from 'react';
 const suits = {'clubs':'♣', 'diamonds': '♦', 'hearts': '♥', 'spades':'♠'};
 
 function Card(props) {
-  const color = (props.suit === 'hearts' || props.suit === 'diamonds') ? 'red' : 'black';
   const symbol = suits[props.suit];
   if (!props.faceUp) {
     return (
-      <div class="card down">*</div>
+      <div className="card down">*</div>
     )
   }
   const divClass = "card rank-".concat(props.value, " ", props.suit);
   return (
-    <div class={divClass}>
-      <span class="rank">{ props.value }</span>
-      <span class="suit">{ symbol }</span>
+    <div className={divClass}>
+      <span className="rank">{ props.value }</span>
+      <span className="suit">{ symbol }</span>
     </div>
   );
 }

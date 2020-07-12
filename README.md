@@ -71,7 +71,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 Blackjack Rules: https://bicyclecards.com/how-to-play/blackjack/
 
 To Add:
-- Fix the ace counting
 - Doubling down
 - Add multi player
 

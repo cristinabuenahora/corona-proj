@@ -50,7 +50,7 @@ const mapStateToProps = (state) => {
     playerTotal: playerTotal,
     dealerHand: getDealerHand(state),
     dealerTotal: dealerTotal,
-    lose: playerTotal >= 21,
+    lose: playerTotal >= 21 || dealerTotal === 21,
     win: playerTotal === 21 || dealerTotal > 21,
     playerTurn: getPlayerTurn(state)
   });
